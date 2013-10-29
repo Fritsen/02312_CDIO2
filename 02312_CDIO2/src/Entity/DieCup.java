@@ -64,30 +64,6 @@ public class DieCup {
         }
         return false;
     }
-
-    /**
-     * Checks if the values of the dice are equal to 6.
-     *
-     * @return True if both dice's facevalue are equal to 6, otherwise False.
-     */
-    public boolean getDoubleSix() {
-        if (die1.getValue() == 6 && die2.getValue() == 6) {
-            return true;
-        }
-        return false;
-    }
-    
-    /**
-     * Checks if the values of the dice are equal to 1.
-     *
-     * @return True if both dice's facevalue are equal to 1, otherwise False.
-     */
-    public boolean getDoubleOne() {
-        if (die1.getValue() == 1 && die2.getValue() == 1) {
-            return true;
-        }
-        return false;
-    }
     
     /**
      * Method that makes a text with the most important values in the class, and some description.

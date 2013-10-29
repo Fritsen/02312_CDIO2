@@ -1,3 +1,5 @@
+//TODO: Translate to english
+
 package Boundary;
 
 import java.util.Scanner;
@@ -13,6 +15,7 @@ public class TUI {
      * Prints game rules.
      */
     public static void printRules() {
+    	//TODO: Print rules for the new game
         System.out.println("");
         System.out.println("-----------------------------------------------");
         System.out.println("| Spilleregler:                               |");
@@ -25,13 +28,42 @@ public class TUI {
         System.out.println("");
     }
     
+    public static String getFieldName(int fieldNumber) {
+    	switch(fieldNumber) {
+	    	case 2:
+	    		return "Tower";
+	    	case 3:
+	    		return "Crater";
+	    	case 4:
+	    		return "Palace gates";
+	    	case 5:
+	    		return "Cold Desert";
+	    	case 6:
+	    		return "Walled city";
+	    	case 7:
+	    		return "Monastery";
+	    	case 8:
+	    		return "Black cave";
+	    	case 9:
+	    		return "Huts in the mountain";
+	    	case 10:
+	    		return "The Wearwall";
+	    	case 11:
+	    		return "The pit";
+	    	case 12:
+	    		return "Goldmine";
+    	}
+    	
+    	return null;
+    }
+    
     /**
      * Prints a short text, asking the specified player to type his name.
      * 
      * @param playerNo The player number to print as part of the message.
      */
-    public static void printNameRequest(int playerNo) {
-        System.out.println("Indtast navn for spiller " + playerNo + ".");
+    public static void printNameRequest(int playerNumber) {
+        System.out.println("Indtast navn for spiller " + (playerNumber+1) + ".");
     }
     
     /**
@@ -54,41 +86,13 @@ public class TUI {
      * @param die2 The facebalue of die2
      */
     public static void printStatus(String player1Name, String player2Name, int player1Score, int player2Score, int die1, int die2) {
-        System.out.println("Der blev slået " + die1 + " - " + die2 + ".");
+        //TODO: Add description of field
+    	System.out.println("Der blev slået " + die1 + " - " + die2 + ".");
         System.out.println("Scoren er nu:");
         System.out.println(player1Name + " = " + player1Score);
         System.out.println(player2Name + " = " + player2Score);
     }
-    
-    /**
-     * Prints the results of the dice test, along woth a nice little chart.
-     * 
-     * @param rolls The number of rolls that have been completed for this test.
-     * @param pairs The number of pairs hit in this test.
-     * @param values An array containing the number of times each sum has been hit. Eg. if the sum 2 was hit 10 times, values[2] should be = 10.
-     */
-    public static void printTestResult(int rolls, int pairs, int[] values) {
-        int i, chars, divider;
-        
-        System.out.println("\nDer blev slået " + rolls + " gange. Resultatet blev:");
-        System.out.println("Antal ens = " + pairs);
-        for(i=2; i<13; i++) {
-            System.out.println("Antal slag med sum " + i + " = " + values[i]);
-        }
-        
-        System.out.println("\nGraf for resultater:");
-        divider = rolls / 100;
-        for (i = 2; i < 13; i++) {
-            chars = values[i] / divider;
-            while(chars > 0) {
-                System.out.print("-");
-                chars--;
-            }
-            
-            System.out.println("");
-        }
-    }
-    
+
     /**
      * Prints the name and score of the winning player.
      * 

@@ -2,16 +2,14 @@ package Entity;
 
 public class Player {
     private String name;
-    private int account;
-    private boolean hitSixLast;
+    private Account account;
     
     /**
-     * Constructor that initiates all the values to emty/zero.
+     * Constructor that initiates name to empty and account to an initial score.
      */
-    public Player() {
+    public Player(int initialScore) {
         name = "";
-        account = 0;
-        hitSixLast = false;
+        account = new Account(initialScore);
     }
     
     /**
@@ -38,7 +36,7 @@ public class Player {
      * @param input The amaount to set the account to.
      */
     public void setAccount(int input) {
-        account = input;
+        account.setAccountValue(input);
     }
     
     /**
@@ -47,7 +45,7 @@ public class Player {
      * @return The amount currently in the players account.
      */
     public int getAccount() {
-        return account;
+        return account.getAccountValue();
     }
     
     /**
@@ -56,25 +54,7 @@ public class Player {
      * @param input The amount to add.
      */
     public void addToAccount(int input) {
-        account = account + input;
-    }
-    
-    /**
-     * Saves a true/false value for whether or not the player hit double six in the last turn.
-     * 
-     * @param input True/false for hit double six or not.
-     */
-    public void setHitSixLast(boolean input) {
-        hitSixLast = input;
-    }
-    
-    /**
-     * Gets a true/false value for whether or not the player hit double six in the last turn.
-     * 
-     * @return True/false for hit double six or not.
-     */
-    public boolean getHitSixLast() {
-        return hitSixLast;
+        account.addToAccount(input);
     }
     
     /**
@@ -83,6 +63,6 @@ public class Player {
      * @return A coherent string with values of name, account and hitSixLast.
      */
     public String toString() {
-        return "Name = " + name + ", account = " + account + ", hitSixLast = " + hitSixLast;
+        return "Name = " + name + ", Account = " + account;
     }
 } 
