@@ -1,10 +1,6 @@
-//TODO: Translate to english
-
 package Boundary;
 
 import java.util.Scanner;
-
-import boundaryToMatador.GUI;
 
 import Entity.Player;
 
@@ -19,16 +15,15 @@ public class TUI {
      * Prints game rules.
      */
     public static void printRules() {
-    	//TODO: Print rules for the new game
         System.out.println("");
-        System.out.println("-----------------------------------------------");
-        System.out.println("| Spilleregler:                               |");
-        System.out.println("| Man vinder på 2 seksere 2 gange i træk (6). |");
-        System.out.println("| Man taber alle point på to enere (1).       |");
-        System.out.println("| Får et ekstra slag med 2 ens terninger.     |");
-        System.out.println("| Tryk Enter for at slå.                      |");
-        System.out.println("| Tryk q for at afslutte spillet              |");
-        System.out.println("-----------------------------------------------");
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("| Rules:                                                     |");
+        System.out.println("| You roll two dice. The sum determines which field you hit. |");
+        System.out.println("| Each field have it's own value.                            |");
+        System.out.println("| You get points on some, and loses points on others.        |");
+        System.out.println("| The first player to hit 3000 points win.                   |");
+        System.out.println("| Press \"Enter\" to roll, press \"q\" to exit.                  |");
+        System.out.println("--------------------------------------------------------------");
         System.out.println("");
     }
     
@@ -61,13 +56,42 @@ public class TUI {
     	return null;
     }
     
+    public static String getFieldDescription(int fieldNumber) {
+    	switch(fieldNumber) {
+    	case 2:
+    		return "You entered the tower. Gain 250 credits for climbing it.";
+    	case 3:
+    		return "You crashed into the road creating a crater. Pay 200 credits towards repair costs.";
+    	case 4:
+    		return "You went sightseeing at the palace gates but got robbed. Pay 100 credits.";
+    	case 5:
+    		return "You ran out of gas exploring the Cold Desert. Pay 20 credits for more gas to get home.";
+    	case 6:
+    		return "You bet on a race in the Walled City and won. Gain 180 credits.";
+    	case 7:
+    		return "You climbed the mountain and gained wisdom. Do nothing.";
+    	case 8:
+    		return "You got lost in the black cave. Pay a park ranger 70 credits for helping you out.";
+    	case 9:
+    		return "You accidentally set fire to a hut on the mountain. Pay 60 credits for materials to rebuild.";
+    	case 10:
+    		return "You got caught naked and drunk strolling around in Wearwall. Pay the police a fine of 80 credits.\nThey felt sorry for you. Recieve another turn.";
+    	case 11:
+    		return "You tried to steal a police car. Pay 90 credits as bail.";
+    	case 12:
+    		return "You travelled to Alaska and struck it big in gold. Recieve 650 credits.";
+	}
+	
+	return null;
+    }
+    
     /**
      * Prints a short text, asking the specified player to type his name.
      * 
      * @param playerNo The player number to print as part of the message.
      */
     public static void printNameRequest(int playerNumber) {
-        System.out.println("Indtast navn for spiller " + (playerNumber+1) + ".");
+        System.out.println("Insert name for player " + (playerNumber+1) + ".");
     }
     
     /**
@@ -76,7 +100,7 @@ public class TUI {
      * @param name The name to print as part of the message.
      */
     public static void printTurn(String name) {
-        System.out.print("\nDet er " + name + "'s tur. Tryk enter for at slå.");
+        System.out.print("\nIt's " + name + "'s turn. Press enter to roll.");
     }
     
     /**
@@ -90,12 +114,10 @@ public class TUI {
      * @param die2 The facebalue of die2
      */
     public static void printStatus(Player[] players, int sum) {
-        //TODO: Add description of field
-    	System.out.println("Du landede på felt nummer " + sum + ", " + getFieldName(sum) + ".");
-        System.out.println("Scoren er nu:");
+    	System.out.println("You hit field number " + sum + ", " + getFieldName(sum) + " | " + getFieldDescription(sum));
+        System.out.println("The score is now:");
         
         int i;
-        
 		for(i = 0; i<players.length; i++) {
 			System.out.print(players[i].getName() + " = " + players[i].getAccount().getAccountValue() + "\t");
 		}
@@ -110,7 +132,7 @@ public class TUI {
      * @param score The score for the winning player.
      */
     public static void printWinner(String name, int score) {
-        System.out.println("Tillykke! " + name + " har vundet med " + score + " point!\nTryk Enter for at afslutte.");
+        System.out.println("Congratulations! " + name + " has won with " + score + " points!\nPress Enter to exit.");
     }
     
     /**

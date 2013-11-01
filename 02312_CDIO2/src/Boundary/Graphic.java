@@ -32,6 +32,17 @@ public class Graphic {
 		createField("The Wearwall", "-80", 10); 
 		createField("The pit", "-90", 11);
 		createField("Goldmine", "+650", 12); 
+		
+		//Remove unused fields from GUI
+		int i;
+		createField("", "", 1);
+		for(i=13; i<41; i++) {
+			createField("", "", i);
+		}
+	}
+	
+	public static void moveCar(int playerNumber, int fieldNumber) {
+		GUI.setCar(fieldNumber, playerNumber);
 	}
 	
 	private static void createField(String title, String subTitle, int fieldNumber) {

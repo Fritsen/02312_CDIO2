@@ -5,7 +5,6 @@ import java.util.Scanner;
 import Boundary.Graphic;
 import Boundary.TUI;
 import Entity.DieCup;
-import Entity.Field;
 import Entity.GameBoard;
 import Entity.Player;
 
@@ -81,7 +80,7 @@ public class Game {
             players[activePlayer].getAccount().addToAccount(scoreToAdd);
             
             //Write status/score to both TUI and GUI
-            statusTasks();
+            statusTasks(activePlayer);
             
             //Check if player have won
             if (players[activePlayer].getAccount().getAccountValue() >= POINTS_TO_WIN) {
@@ -112,11 +111,11 @@ public class Game {
     /**
      * Writes score and dice values to both GUI and TUI
      */
-    private void statusTasks() {
-    	//TODO: Update fields as well
+    private void statusTasks(int activePlayer) {
         TUI.printStatus(players, dieCup.getSum());
         Graphic.setDice(dieCup.getValueDie1(), dieCup.getValueDie2());
         Graphic.updatePlayers(players);
+        Graphic.moveCar(activePlayer, dieCup.getSum());
     }
     
     /**
