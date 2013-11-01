@@ -23,4 +23,17 @@ public class GameBoard {
 	public Field getField(int fieldNumber) {
 		return fields[fieldNumber];
 	}
+	
+	public String toString() {
+		String output = "";
+		int i;
+		
+		for(i=0; i<fields.length; i++) {
+			if(fields[i] != null) {
+				output = output + fields[i] + "\n";
+			}
+		}
+		
+		return output;
+	}
 }

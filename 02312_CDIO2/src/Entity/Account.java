@@ -22,4 +22,8 @@ public class Account {
 	public void addToAccount(int input) {
 		accountValue = accountValue + input;
 	}
+	
+	public String toString() {
+		return Integer.toString(accountValue);
+	}
 }

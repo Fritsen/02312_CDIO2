@@ -21,4 +21,8 @@ public class Field {
 	public boolean getGivesExtraTurn() {
 		return givesExtraTurn;
 	}
+	
+	public String toString() {
+		return "Field score: " + fieldScore + ", gives extra turn: " + givesExtraTurn;
+	}
 }

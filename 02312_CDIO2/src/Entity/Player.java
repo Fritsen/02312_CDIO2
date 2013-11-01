@@ -42,7 +42,7 @@ public class Player {
     /**
      * Method that makes a text with the most important values in the class, and some description.
      *
-     * @return A coherent string with values of name, account and hitSixLast.
+     * @return A coherent string with values of name and account.
      */
     public String toString() {
         return "Name = " + name + ", Account = " + account;
