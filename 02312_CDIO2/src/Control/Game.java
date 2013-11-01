@@ -2,11 +2,12 @@ package Control;
 
 import java.util.Scanner;
 
+import Boundary.Graphic;
 import Boundary.TUI;
 import Entity.DieCup;
 import Entity.Field;
+import Entity.GameBoard;
 import Entity.Player;
-import boundaryToMatador.GUI;
 
 /**
  * This is controller class in the dice game.
@@ -21,8 +22,8 @@ public class Game {
     
     private DieCup dieCup;
     private Scanner scanner;
+    private GameBoard gameBoard;
     private Player[] players;
-    private Field[] fields;
 
     /**
      * Game constructor. Creates new instances of the required classes.
@@ -32,34 +33,22 @@ public class Game {
     	
         dieCup = new DieCup();
         scanner = new Scanner(System.in);
+        gameBoard = new GameBoard();
         players = new Player[NUMBER_OF_PLAYERS];
-        fields = new Field[13];
         
     	//Make all player-objekts in loop
     	for(i=0; i<NUMBER_OF_PLAYERS; i++) {
     		players[i] = new Player(POINTS_TO_START_WITH);
     	}
     	
-    	//TODO: Consider creating these in a seperate class like a board or something...?
-    	//Create the fields
-    	createField(2, 250, false);
-    	createField(3, -200, false);
-    	createField(4, -100, false);
-    	createField(5, -20, false);
-    	createField(6, +180, false);
-    	createField(7, 0, false);
-    	createField(8, -70, false);
-    	createField(9, -60, false);
-    	createField(10, -80, true);
-    	createField(11, -90, false);
-    	createField(12, +650, false);
+    	Graphic.setupFields();
     }
     
     /**
      * Start the game.
      */
     public void startGame() {
-        int activePlayer, i;
+        int activePlayer, i, scoreToAdd;
         String userInput;
         
         TUI.printRules();
@@ -87,18 +76,20 @@ public class Game {
             //Shake, and add the sum of the dice to the current players score
             dieCup.shakeDieCup();
             
-            //TODO: Add points from field
+            //Add points from field
+            scoreToAdd = gameBoard.getField(dieCup.getSum()).getFieldScore();
+            players[activePlayer].getAccount().addToAccount(scoreToAdd);
             
             //Write status/score to both TUI and GUI
             statusTasks();
             
             //Check if player have won
-            if (players[activePlayer].getAccount() >= POINTS_TO_WIN) {
+            if (players[activePlayer].getAccount().getAccountValue() >= POINTS_TO_WIN) {
                 winTasks(activePlayer);
             }
             
             //Switch turn to the next player, unless the current player gets an extra turn
-            if(!fields[dieCup.getSum()].givesExtraTurn()) {
+            if(!gameBoard.getField(dieCup.getSum()).getGivesExtraTurn()) {
                 activePlayer = getNextPlayer(activePlayer);
             } 
         }
@@ -123,10 +114,9 @@ public class Game {
      */
     private void statusTasks() {
     	//TODO: Update fields as well
-        TUI.printStatus(players[0].getName(), players[1].getName(), players[0].getAccount(), players[1].getAccount(), dieCup.getValueDie1(), dieCup.getValueDie2());
-        GUI.setDice(dieCup.getValueDie1(), dieCup.getValueDie2());
-        GUI.addPlayer(players[0].getName(), players[1].getAccount(), 1);
-        GUI.addPlayer(players[0].getName(), players[1].getAccount(), 2);
+        TUI.printStatus(players, dieCup.getSum());
+        Graphic.setDice(dieCup.getValueDie1(), dieCup.getValueDie2());
+        Graphic.updatePlayers(players);
     }
     
     /**
@@ -135,7 +125,7 @@ public class Game {
      * Ends the program when any input is given.
      */
     private void winTasks(int activePlayer) {
-        TUI.printWinner(players[activePlayer-1].getName(), players[activePlayer-1].getAccount());
+        TUI.printWinner(players[activePlayer].getName(), players[activePlayer].getAccount().getAccountValue());
         TUI.getUserInput(scanner);
         cleanUp();
     }
@@ -144,13 +134,8 @@ public class Game {
      * Closes the program and cleans up properly. 
      */
     private void cleanUp() {
-        GUI.close();
+        Graphic.close();
         scanner.close();
         System.exit(0);
-    }
-    
-    private void createField(int fieldNumber, int fieldScore, boolean givesExtraTurn) {
-    	//TODO: Add field on GUI
-    	fields[fieldNumber] = new Field(fieldScore, givesExtraTurn);
     }
 } 

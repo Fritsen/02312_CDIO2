@@ -1,19 +1,24 @@
 package Entity;
 
 public class Field {
-	int fieldScore;
-	boolean givesExtraTurn;
+	private int fieldScore;
+	private boolean givesExtraTurn;
+
+	public Field(int fieldScore) {
+		this.fieldScore = fieldScore;
+		this.givesExtraTurn = false;
+	}
 	
 	public Field(int fieldScore, boolean givesExtraTurn) {
 		this.fieldScore = fieldScore;
 		this.givesExtraTurn = givesExtraTurn;
 	}
 	
-	public int fieldScore() {
+	public int getFieldScore() {
 		return fieldScore;
 	}
 	
-	public boolean givesExtraTurn() {
+	public boolean getGivesExtraTurn() {
 		return givesExtraTurn;
 	}
 }

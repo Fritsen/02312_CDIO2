@@ -4,6 +4,10 @@ package Boundary;
 
 import java.util.Scanner;
 
+import boundaryToMatador.GUI;
+
+import Entity.Player;
+
 /**
  * Class to handle input/output to/from the console.
  *
@@ -85,12 +89,18 @@ public class TUI {
      * @param die1 The facevalue of die1
      * @param die2 The facebalue of die2
      */
-    public static void printStatus(String player1Name, String player2Name, int player1Score, int player2Score, int die1, int die2) {
+    public static void printStatus(Player[] players, int sum) {
         //TODO: Add description of field
-    	System.out.println("Der blev slået " + die1 + " - " + die2 + ".");
+    	System.out.println("Du landede på felt nummer " + sum + ", " + getFieldName(sum) + ".");
         System.out.println("Scoren er nu:");
-        System.out.println(player1Name + " = " + player1Score);
-        System.out.println(player2Name + " = " + player2Score);
+        
+        int i;
+        
+		for(i = 0; i<players.length; i++) {
+			System.out.print(players[i].getName() + " = " + players[i].getAccount().getAccountValue() + "\t");
+		}
+		
+		System.out.println();
     }
 
     /**

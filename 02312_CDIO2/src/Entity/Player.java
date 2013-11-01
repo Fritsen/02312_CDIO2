@@ -31,30 +31,12 @@ public class Player {
     }
     
     /**
-     * Set the account value to the number given.
+     * Gets the current account.
      * 
-     * @param input The amaount to set the account to.
+     * @return The players account.
      */
-    public void setAccount(int input) {
-        account.setAccountValue(input);
-    }
-    
-    /**
-     * Gets the current account value.
-     * 
-     * @return The amount currently in the players account.
-     */
-    public int getAccount() {
-        return account.getAccountValue();
-    }
-    
-    /**
-     * Takes the current account value and adds the given number.
-     * 
-     * @param input The amount to add.
-     */
-    public void addToAccount(int input) {
-        account.addToAccount(input);
+    public Account getAccount() {
+        return account;
     }
     
     /**
