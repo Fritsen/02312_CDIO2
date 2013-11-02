@@ -8,11 +8,15 @@ public class Graphic {
 		GUI.setDice(die1, die2);
 	}
 	
+	public static void addPlayer(String playerName, int playerScore) {
+		GUI.addPlayer(playerName, playerScore);
+	}
+	
 	public static void updatePlayers(Player[] players) {
 		int i;
 		
 		for(i = 0; i<players.length; i++) {
-			GUI.addPlayer(players[i].getName(), players[i].getAccount().getAccountValue(), i);
+			GUI.setBalance(players[i].getName(), players[i].getAccount().getAccountValue());
 		}
 	}
 	
@@ -41,8 +45,9 @@ public class Graphic {
 		}
 	}
 	
-	public static void moveCar(int playerNumber, int fieldNumber) {
-		GUI.setCar(fieldNumber, playerNumber);
+	public static void moveCar(String playerName, int fieldNumber) {
+		GUI.removeAllCars(playerName);
+		GUI.setCar(fieldNumber, playerName);
 	}
 	
 	private static void createField(String title, String subTitle, int fieldNumber) {

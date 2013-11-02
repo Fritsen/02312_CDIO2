@@ -52,10 +52,11 @@ public class Game {
         
         TUI.printRules();
         
-        //Ask for all player names and save them in the player objects
+        //Ask for all player names and save them in the player objects. Also adds the players to the GUI.
         for(i=0; i<NUMBER_OF_PLAYERS; i++) {
         	TUI.printNameRequest(i);
         	players[i].setName(TUI.getUserInput(scanner));
+        	Graphic.addPlayer(players[i].getName(), players[i].getAccount().getAccountValue());
         }
         
         //Player 1 always starts. However this would work with Player 2, or even random.
@@ -115,7 +116,7 @@ public class Game {
         TUI.printStatus(players, dieCup.getSum());
         Graphic.setDice(dieCup.getValueDie1(), dieCup.getValueDie2());
         Graphic.updatePlayers(players);
-        Graphic.moveCar(activePlayer, dieCup.getSum());
+        Graphic.moveCar(players[activePlayer].getName(), dieCup.getSum());
     }
     
     /**
