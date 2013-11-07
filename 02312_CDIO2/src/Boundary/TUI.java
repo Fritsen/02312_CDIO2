@@ -136,7 +136,7 @@ public class TUI {
 	 */
 	public static void printStatus(Player[] players, int sum) {
 		System.out.println("You hit field number " + sum + ", "
-				+ getFieldName(sum) + " | " + getFieldDescription(sum));
+				+ getFieldName(sum) + "\n" + getFieldDescription(sum));
 		System.out.println("The score is now:");
 
 		int i;
@@ -161,6 +161,14 @@ public class TUI {
 				+ score + " points!\nPress Enter to exit.");
 	}
 
+	/**
+	 * Prints the name and score of the loosing player.
+	 * 
+	 * @param name
+	 *            The name of the player who should be declared the looser.
+	 * @param score
+	 *            The score for the loosing player.
+	 */
 	public static void printLooser(String name, int score) {
 		System.out.println("Sorry! " + name + " you have lost with " + score
 				+ " points!\nPress Enter to exit.");
