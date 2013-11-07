@@ -5,7 +5,7 @@ import java.util.Scanner;
 import Boundary.Graphic;
 import Boundary.TUI;
 import Entity.DieCup;
-import Entity.GameBoardTest;
+import Entity.GameBoard;
 import Entity.Player;
 
 /**
@@ -21,7 +21,8 @@ public class Game {
 
 	private DieCup dieCup;
 	private Scanner scanner;
-	private GameBoardTest gameBoard;
+	private GameBoard gameBoard;
+	// private GameBoardTest gameBoard;
 	private Player[] players;
 
 	/**
@@ -32,7 +33,8 @@ public class Game {
 
 		dieCup = new DieCup();
 		scanner = new Scanner(System.in);
-		gameBoard = new GameBoardTest();
+		gameBoard = new GameBoard();
+		// gameBoard = new GameBoardTest();
 		players = new Player[NUMBER_OF_PLAYERS];
 
 		// Make all player-objekts in loop

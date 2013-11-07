@@ -7,17 +7,17 @@ public class GameBoardTest {
 		fields = new Field[13];
 
 		// Create the fields
-		fields[2] = new Field(-250);
-		fields[3] = new Field(-200);
-		fields[4] = new Field(-100);
-		fields[5] = new Field(-20);
-		fields[6] = new Field(-180);
-		fields[7] = new Field(0);
-		fields[8] = new Field(-70);
-		fields[9] = new Field(-60);
-		fields[10] = new Field(-80, true);
-		fields[11] = new Field(-90);
-		fields[12] = new Field(-650);
+		fields[2] = new Field(-3001);
+		fields[3] = new Field(-3000);
+		fields[4] = new Field(-2999);
+		fields[5] = new Field(-4000);
+		fields[6] = new Field(-5500);
+		fields[7] = new Field(-7000);
+		fields[8] = new Field(-700000);
+		fields[9] = new Field(-1000000);
+		fields[10] = new Field(-8000, true);
+		fields[11] = new Field(-9000);
+		fields[12] = new Field(-6500);
 	}
 
 	public Field getField(int fieldNumber) {
