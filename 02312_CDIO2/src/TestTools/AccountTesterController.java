@@ -2,13 +2,25 @@ package TestTools;
 
 import Entity.Account;
 
+/**
+ * Class to test the Account class.
+ *
+ * @author DTU 02312 Gruppe 19
+ *
+ */
 public class AccountTesterController {
 	Account account;
 	
+	/**
+	 * Constructor to make a new account.
+	 */
 	public AccountTesterController() {
 		account = new Account();
 	}
 	
+	/**
+	 * Method that tast the Account class and prints the results directly in the console.
+	 */
 	public void testAccount() {
 		//Set test - Limits
 		System.out.println("Set to 1 = " + account.setAccountValue(1));

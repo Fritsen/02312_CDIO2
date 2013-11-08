@@ -1,7 +1,7 @@
 package TestTools;
 
 /**
- * Class to create a diecup. This class will take in 2 dice.
+ * Class to create a "cheating" diecup. This class will not actually use dice, but just give a hardcoded number every time.
  *
  * @author DTU 02312 Gruppe 19
  *
@@ -19,6 +19,8 @@ public class DieCupTestEntity {
 
     /**
      * Method to shake the diecup.
+     * This won't do anything in this class, since the values are final. It just have to be there, to make
+     * it possible to substitute the "real" DieCup with this "false" one.
      */
     public void shakeDieCup() {
     	//Does nothing, since the values are fixed

@@ -107,9 +107,8 @@ public class Game {
 	/**
 	 * Simple method to get the number of the next player.
 	 * 
-	 * @param input
-	 *            The number to toggle away from.
-	 * @return 1 if 2 is given, 2 if 1 is given.
+	 * @param input The number to toggle away from.
+	 * @return 2 if 1 is given etc., but gives 1 if the value for number of players is reached.
 	 */
 	private int getNextPlayer(int input) {
 		if (input + 1 >= NUMBER_OF_PLAYERS) {
@@ -130,9 +129,11 @@ public class Game {
 	}
 
 	/**
-	 * Prints the name of the current player, along with a message telling that
+	 * Prints the name of the given player, along with a message telling that
 	 * he has won the game., then waits for input, to make sure the message
 	 * stays on the screen. Ends the program when any input is given.
+	 * 
+	 * @param activePlayer The number of the player who should be declared the winner.
 	 */
 	private void winTasks(int activePlayer) {
 		TUI.printWinner(players[activePlayer].getName(), players[activePlayer]
@@ -141,6 +142,13 @@ public class Game {
 		cleanUp();
 	}
 
+	/**
+	 * Prints the name of the given player, along with a message telling that
+	 * he has lost the game., then waits for input, to make sure the message
+	 * stays on the screen. Ends the program when any input is given.
+	 * 
+	 * @param activePlayer The number of the player who should be declared the loser.
+	 */
 	private void loseTasks(int activePlayer) {
 		TUI.printLoser(players[activePlayer].getName(), players[activePlayer]
 				.getAccount().getAccountValue());

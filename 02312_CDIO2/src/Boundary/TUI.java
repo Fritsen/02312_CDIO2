@@ -35,6 +35,13 @@ public class TUI {
 		System.out.println("");
 	}
 
+	/**
+	 * Method to get the name of a field from the field number.
+	 * The names are given according to the game rules, but could be translated.
+	 * 
+	 * @param fieldNumber The number of the field to get a name for. 
+	 * @return The name of the field with the given number. Null if the field doesn't exist.
+	 */
 	public static String getFieldName(int fieldNumber) {
 		switch (fieldNumber) {
 		case 2:
@@ -64,6 +71,13 @@ public class TUI {
 		return null;
 	}
 
+	/**
+	 * Method to get the description of a field from the field number.
+	 * The descriptions are given according to the game rules, but could be translated.
+	 * 
+	 * @param fieldNumber The number of the field to get a description for. 
+	 * @return The description for the field with the given number. Null if the field doesn't exist.
+	 */
 	public static String getFieldDescription(int fieldNumber) {
 		switch (fieldNumber) {
 		case 2:
@@ -96,8 +110,7 @@ public class TUI {
 	/**
 	 * Prints a short text, asking the specified player to type his name.
 	 * 
-	 * @param playerNo
-	 *            The player number to print as part of the message.
+	 * @param playerNo The player number to print as part of the message.
 	 */
 	public static void printNameRequest(int playerNumber) {
 		System.out
@@ -105,34 +118,21 @@ public class TUI {
 	}
 
 	/**
-	 * Prints a shot text, telling the player whos turn it is, and asking him to
+	 * Prints a short text, telling the player who's turn it is, and asking him to
 	 * roll.
 	 * 
-	 * @param name
-	 *            The name to print as part of the message.
+	 * @param name The name to print as part of the message.
 	 */
 	public static void printTurn(String name) {
 		System.out.print("\nIt's " + name + "'s turn. Press enter to roll.");
 	}
 
 	/**
-	 * Prints the current status of the game. Thats both players score and the
-	 * facevalue of the dice.
+	 * Prints the current status of the game. Thats all players score and the
+	 * sum of the dice.
 	 * 
-	 * @param player1Name
-	 *            The name of the first player, to print as part of the message
-	 * @param player2Name
-	 *            The name of the second player, to print as part of the message
-	 * @param player1Score
-	 *            The score for the first player, to print as part of the
-	 *            message
-	 * @param player2Score
-	 *            The score for the second player, to print as part of the
-	 *            message
-	 * @param die1
-	 *            The facevalue of die1
-	 * @param die2
-	 *            The facebalue of die2
+	 * @param players An array of players to get the information from.
+	 * @param sum The value that was hit with the dice.
 	 */
 	public static void printStatus(Player[] players, int sum) {
 		System.out.println("You hit field number " + sum + ", "
@@ -151,10 +151,8 @@ public class TUI {
 	/**
 	 * Prints the name and score of the winning player.
 	 * 
-	 * @param name
-	 *            The name of the player who should be declared the winner.
-	 * @param score
-	 *            The score for the winning player.
+	 * @param name The name of the player who should be declared the winner.
+	 * @param score The score for the winning player.
 	 */
 	public static void printWinner(String name, int score) {
 		System.out.println("Congratulations! " + name + " has won with "
@@ -162,12 +160,10 @@ public class TUI {
 	}
 
 	/**
-	 * Prints the name and score of the loosing player.
+	 * Prints the name and score of the losing player.
 	 * 
-	 * @param name
-	 *            The name of the player who should be declared the looser.
-	 * @param score
-	 *            The score for the loosing player.
+	 * @param name The name of the player who should be declared the loser.
+	 * @param score The score for the losing player.
 	 */
 	public static void printLoser(String name, int score) {
 		System.out.println("Sorry! " + name + " you have lost with " + score
@@ -177,8 +173,7 @@ public class TUI {
 	/**
 	 * Reads a line from the console.
 	 * 
-	 * @param scanner
-	 *            The scanner to read from
+	 * @param scanner The scanner to read from
 	 * @return Whatever the user inputs.
 	 */
 	public static String getUserInput(Scanner scanner) {

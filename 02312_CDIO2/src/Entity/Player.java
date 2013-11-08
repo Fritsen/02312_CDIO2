@@ -1,5 +1,11 @@
 package Entity;
 
+/**
+ * Class to create a player. This class can be used for storing a name and account for a player.
+ *
+ * @author DTU 02312 Gruppe 19
+ *
+ */
 public class Player {
     private String name;
     private Account account;
@@ -31,7 +37,7 @@ public class Player {
     }
     
     /**
-     * Gets the current account.
+     * Gets the account object.
      * 
      * @return The players account.
      */
