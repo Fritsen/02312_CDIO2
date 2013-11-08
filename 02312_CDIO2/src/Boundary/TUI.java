@@ -169,7 +169,7 @@ public class TUI {
 	 * @param score
 	 *            The score for the loosing player.
 	 */
-	public static void printLooser(String name, int score) {
+	public static void printLoser(String name, int score) {
 		System.out.println("Sorry! " + name + " you have lost with " + score
 				+ " points!\nPress Enter to exit.");
 	}

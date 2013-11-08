@@ -84,7 +84,9 @@ public class Game {
 
 			// Add points from field
 			scoreToAdd = gameBoard.getField(dieCup.getSum()).getFieldScore();
-			players[activePlayer].getAccount().addToAccount(scoreToAdd);
+			if(!players[activePlayer].getAccount().addToAccount(scoreToAdd)) {
+				loseTasks(activePlayer);
+			}
 
 			// Write status/score to both TUI and GUI
 			statusTasks(activePlayer);
@@ -92,11 +94,6 @@ public class Game {
 			// Check if player have won
 			if (players[activePlayer].getAccount().getAccountValue() >= POINTS_TO_WIN) {
 				winTasks(activePlayer);
-			}
-
-			// Check if player have lost
-			if (players[activePlayer].getAccount().getAccountValue() <= 0) {
-				looseTasks(activePlayer);
 			}
 
 			// Switch turn to the next player, unless the current player gets an
@@ -144,8 +141,8 @@ public class Game {
 		cleanUp();
 	}
 
-	private void looseTasks(int activePlayer) {
-		TUI.printLooser(players[activePlayer].getName(), players[activePlayer]
+	private void loseTasks(int activePlayer) {
+		TUI.printLoser(players[activePlayer].getName(), players[activePlayer]
 				.getAccount().getAccountValue());
 		TUI.getUserInput(scanner);
 		cleanUp();

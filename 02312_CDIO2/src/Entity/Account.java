@@ -11,16 +11,26 @@ public class Account {
 		accountValue = initialAccountValue;
 	}
 	
-	public void setAccountValue(int input) {
-		accountValue = input;
+	public boolean setAccountValue(int input) {
+		if(input > 0) {
+			accountValue = input;
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public int getAccountValue() {
 		return accountValue;
 	}
 	
-	public void addToAccount(int input) {
-		accountValue = accountValue + input;
+	public boolean addToAccount(int input) {
+		if(accountValue + input > 0) {
+			accountValue = accountValue + input;
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public String toString() {
