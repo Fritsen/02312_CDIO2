@@ -12,7 +12,7 @@ public class Account {
 	}
 	
 	public boolean setAccountValue(int input) {
-		if(input > 0) {
+		if(input >= 0) {
 			accountValue = input;
 			return true;
 		}
@@ -25,7 +25,7 @@ public class Account {
 	}
 	
 	public boolean addToAccount(int input) {
-		if(accountValue + input > 0) {
+		if(accountValue + input >= 0) {
 			accountValue = accountValue + input;
 			return true;
 		}

@@ -1,9 +1,11 @@
-package Entity;
+package TestTools;
 
-public class GameBoardTest {
+import Entity.Field;
+
+public class GameBoardTestEntity {
 	Field[] fields;
 
-	public GameBoardTest() {
+	public GameBoardTestEntity() {
 		fields = new Field[13];
 
 		// Create the fields
