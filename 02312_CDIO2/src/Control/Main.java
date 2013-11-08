@@ -5,7 +5,7 @@ public class Main {
     	//TestTools.AccountTesterController at = new TestTools.AccountTesterController();
     	//at.testAccount();
     	
-    	//Game game = new Game();
-    	//game.startGame();
+    	Game game = new Game();
+    	game.startGame();
     }
 } 
