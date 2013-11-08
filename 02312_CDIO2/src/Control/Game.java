@@ -22,7 +22,6 @@ public class Game {
 	private DieCup dieCup;
 	private Scanner scanner;
 	private GameBoard gameBoard;
-	// private GameBoardTest gameBoard;
 	private Player[] players;
 
 	/**
@@ -34,7 +33,6 @@ public class Game {
 		dieCup = new DieCup();
 		scanner = new Scanner(System.in);
 		gameBoard = new GameBoard();
-		// gameBoard = new GameBoardTest();
 		players = new Player[NUMBER_OF_PLAYERS];
 
 		// Make all player-objekts in loop
